@@ -46,6 +46,9 @@ jobs:
       - name: Pack Store Azure Storage
         run: dotnet pack ./CoreHelpers.Branding.Stores.AzureStorage --configuration Release -p:PackageVersion=${{ steps.get_version.outputs.release_version }} --output .
 
+      - name: Pack ApsNet Support
+        run: dotnet pack ./CoreHelpers.Branding.AspNet --configuration Release -p:PackageVersion=${{ steps.get_version.outputs.release_version }} --output .
+
       - name: Upload Nuget Package to release (Runtime Abstractions)
         uses: svenstaro/upload-release-action@v2
         with:
@@ -64,7 +67,7 @@ jobs:
           tag: ${{ steps.get_version.outputs.release_tag }}
           overwrite: true
        
-      - name: Upload Nuget Package to release (Store Azure Storage )
+      - name: Upload Nuget Package to release (Store Azure Storage)
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
@@ -72,6 +75,15 @@ jobs:
           asset_name: CoreHelpers.Branding.Stores.AzureStorage.${{ steps.get_version.outputs.release_version }}.nupkg
           tag: ${{ steps.get_version.outputs.release_tag }}
           overwrite: true 
-               
+          
+      - name: Upload Nuget Package to release (AspNet Support)
+        uses: svenstaro/upload-release-action@v2
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          file: CoreHelpers.Branding.AspNet.${{ steps.get_version.outputs.release_version }}.nupkg
+          asset_name: CoreHelpers.Branding.AspNet.${{ steps.get_version.outputs.release_version }}.nupkg
+          tag: ${{ steps.get_version.outputs.release_tag }}
+          overwrite: true 
+                              
       - name: Publish NuGet
         run: dotnet nuget push ./*.nupkg --api-key ${{ secrets.NUGET_TOKEN }} -s https://api.nuget.org/v3/index.json
