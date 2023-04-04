@@ -5,6 +5,16 @@ stores are supported:
 
 * Azure Storage Account: This store has the branding manifest stored on an Azure Storage account
 
+## Installation 
+There are several NuGet packages installable
+
+```
+NuGet\Install-Package CoreHelpers.Branding.Runtime.Abstractions
+NuGet\Install-Package CoreHelpers.Branding.Runtime
+NuGet\Install-Package CoreHelpers.Branding.AspNet 
+NuGet\Install-Package CoreHelpers.Branding.Stores.AzureStorage 
+```
+
 ## Configuration
 The system must be configured by adding the following section into the application configuration:
 
@@ -28,11 +38,43 @@ the structure is as follows:
 }
 ```
 
-## Registering services
+## Register services
 The system is compatible with the .NET Core Dependency Injection. The following requests allow to regsiter
 the different services. This code should be added in the service configuration section of your application:
 
 ```
 builder.Services.AddBrandingServices();
 builder.Services.AddBrandingServices4AzureStorage(builder.Configuration);
+```
+
+## Apply branding based on request host
+A common scenario is to apply the branding based on the host header of the incoming requets. The following middleware
+allows injects the current branding based on the host header:
+
+```
+app.UseBrandingWithRequestHost("YOUR_APPLICATION_ID", async (brandingManager) =>
+{
+    var defaultBranding = brandingManager.BuildMutableBranding("YOUR_APP_TITLE");
+
+    //
+    // Add more defaults here ....
+    //     
+    await Task.CompletedTask;
+    
+    return defaultBranding;
+});
+```
+
+## Use current branding in views
+The current branding in views can be used easily by injecting the brand state and using them like 
+a view model. Add the following lines to _ViewImports.cshtml:
+
+```
+@inject CoreHelpers.Branding.Runtime.IBrandingStateService branding
+```
+
+In every view the branding model can be used as follows: 
+
+```
+<a class="link" target="_new" href="@branding.CurrentCompanyBranding.Legals[nLegalItems.imprint]">Imprint</a>
 ```
