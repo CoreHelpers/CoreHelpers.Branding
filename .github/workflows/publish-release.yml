@@ -28,12 +28,12 @@ jobs:
             console.log('Release Version ' + release_version)
       
       - name: Restore
-        run: dotnet restore CoreHelpers.WindowsAzure.Storage.Table.sln
+        run: dotnet restore Branding.sln
         env: 
           DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
                     
       - name: Build
-        run: dotnet build --no-restore -c Release CoreHelpers.WindowsAzure.Storage.Table.sln -p:Version=${{ steps.get_version.outputs.release_version }}
+        run: dotnet build --no-restore -c Release Branding.sln -p:Version=${{ steps.get_version.outputs.release_version }}
         env: 
           DOTNET_SKIP_FIRST_TIME_EXPERIENCE: 1
                               
