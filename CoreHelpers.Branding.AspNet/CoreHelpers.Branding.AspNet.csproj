@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+ 
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>       
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/CoreHelpers/CoreHelpers.Branding</PackageProjectUrl>   
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CoreHelpers/CoreHelpers.Branding.git</RepositoryUrl>    
+    <Description>Introducing branding in an application is very similar. This project offers an aproach to integrate the branding artifacts into an application. </Description>
+    <PackageTags>dotnet-core dotnet azure azure-storage</PackageTags>
+    <Copyright>(c) Dirk Eisenberg</Copyright>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CoreHelpers.Branding.Runtime.Abstractions\CoreHelpers.Branding.Runtime.Abstractions.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
