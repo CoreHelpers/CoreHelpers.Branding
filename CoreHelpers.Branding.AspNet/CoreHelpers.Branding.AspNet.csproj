@@ -13,7 +13,12 @@
     <PackageTags>dotnet-core dotnet azure azure-storage</PackageTags>
     <Copyright>(c) Dirk Eisenberg</Copyright>
     <OutputType>Library</OutputType>
+    <IsPackable>true</IsPackable>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath="" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\CoreHelpers.Branding.Runtime.Abstractions\CoreHelpers.Branding.Runtime.Abstractions.csproj">
