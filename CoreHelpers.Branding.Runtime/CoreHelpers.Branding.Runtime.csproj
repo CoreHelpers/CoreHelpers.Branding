@@ -1,7 +1,15 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFrameworks>netstandard2.0;netstandard2.1</TargetFrameworks>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <PackageProjectUrl>https://github.com/CoreHelpers/CoreHelpers.Branding</PackageProjectUrl>   
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/CoreHelpers/CoreHelpers.Branding.git</RepositoryUrl>    
+    <Description>Introducing branding in an application is very similar. This project offers an aproach to integrate the branding artifacts into an application. </Description>
+    <PackageTags>dotnet-core dotnet azure azure-storage</PackageTags>
+    <Copyright>(c) Dirk Eisenberg</Copyright>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,5 +26,9 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="6.0.0" />
     <PackageReference Include="Microsoft.Extensions.Caching.Abstractions" Version="6.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+        <None Include="..\LICENSE" Pack="true" PackagePath="" />
   </ItemGroup>
 </Project>
