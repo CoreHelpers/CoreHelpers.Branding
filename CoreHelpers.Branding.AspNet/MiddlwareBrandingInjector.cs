@@ -33,6 +33,39 @@ namespace CoreHelpers.Branding.AspNet
 
             return app;
         }
+
+        public static IApplicationBuilder UseBrandingOfferingRestEndpoint(this IApplicationBuilder app, string endpoint)
+        {
+            app.Use(async (ctx, next) =>
+            {
+                if (!ctx.Request.Path.HasValue || !ctx.Request.Path.Value.ToLower().Equals(endpoint.ToLower()))
+                {
+
+                    // next middleware 
+                    await next(ctx);
+
+                    // done
+                    return;
+                }
+
+                // get the current branding
+                var brandingStateService = ctx.RequestServices.GetRequiredService<IBrandingStateService>();
+                if (brandingStateService == null)
+                    throw new Exception("BrandingStateService is not available");
+
+                // check if we have a current state
+                if (brandingStateService.CurrentCompanyBranding == null)
+                    throw new Exception("No branding state is available");
+
+                // write the branding as json
+                await ctx.Response.WriteAsJsonAsync<ICompanyBranding>(brandingStateService.CurrentCompanyBranding);
+
+                // done
+                return;
+            });
+
+            return app;
+        }
     }
 }
 
