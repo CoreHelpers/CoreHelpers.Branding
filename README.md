@@ -52,16 +52,16 @@ A common scenario is to apply the branding based on the host header of the incom
 allows injects the current branding based on the host header:
 
 ```
-app.UseBrandingWithRequestHost("YOUR_APPLICATION_ID", async (brandingManager) =>
+app.UseBrandingWithRequestHost("YOUR_APPLICATION_ID", async (builder) =>
 {
-    var defaultBranding = brandingManager.BuildMutableBranding("YOUR_APP_TITLE");
+    builder
+        .SetName("YOUR_TITLE")
+        .AddLogo(nLogoSize.small, "YOUR_LOGO_URI")
+        .SetColor(nColorType.primary, "YOUR_COLOR")
+        .SetColor(nColorType.primaryFont, "YOUR_COLOR");       
 
-    //
-    // Add more defaults here ....
-    //     
     await Task.CompletedTask;
-    
-    return defaultBranding;
+    return builder.Build();
 });
 ```
 
