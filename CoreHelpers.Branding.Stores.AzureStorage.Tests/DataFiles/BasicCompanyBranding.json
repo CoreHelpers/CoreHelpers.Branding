@@ -1,0 +1,14 @@
+﻿{
+  "name": "Demo App",
+  "logos": {
+    "small": "https://acme.org/demo.png"
+  },
+  "legals": {
+    "imprint": "https://acme.org/imprint",
+    "dataPrivacy": "https://acme.org/privacy"
+  },
+  "colors": {
+    "primary": "#e20074",
+    "PrimaryFont": "white"
+  }
+}

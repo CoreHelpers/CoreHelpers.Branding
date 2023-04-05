@@ -1,25 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
 using CoreHelpers.Branding.Runtime;
+using Newtonsoft.Json;
 
 namespace CoreHelpers.Branding.Stores.AzureStorage
 {
-    public class AzureStorageCompanyBrandingColors : ICompanyBrandingColors
+    internal class AzureStorageCompanyBrandingColors : ICompanyBrandingColors
     {
-        public string Font { get; }
+        public string Font { get; set; }
 
-        public string FontHover { get; }
+        public string FontHover { get; set; }
 
-        public string FontActive { get; }
+        public string FontActive { get; set; }
 
-        public string Primary { get; }
+        public string Primary { get; set; }
 
-        public string PrimaryHover { get; }
+        public string PrimaryHover { get; set; }
 
-        public string PrimaryFont { get; }
+        public string PrimaryFont { get; set; }
     }
 
-    public class AzureStorageCompanyBranding : ICompanyBranding
+    internal class AzureStorageCompanyBranding : ICompanyBranding
     {		
         public string Name { get; set; }
 
@@ -27,7 +28,8 @@ namespace CoreHelpers.Branding.Stores.AzureStorage
 
         public Dictionary<nLegalItems, string> Legals { get; set; } = new Dictionary<nLegalItems, string>();
 
-        public ICompanyBrandingColors Colors { get; set; } = new AzureStorageCompanyBrandingColors();
+        [JsonConverter(typeof(ConcreteTypeConverter<AzureStorageCompanyBrandingColors>))]
+        public ICompanyBrandingColors Colors { get; set; }
     }
 }
 

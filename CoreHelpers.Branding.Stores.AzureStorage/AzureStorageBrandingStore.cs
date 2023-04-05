@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Net.NetworkInformation;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Azure.Storage.Blobs;
@@ -8,7 +9,7 @@ using Newtonsoft.Json;
 
 namespace CoreHelpers.Branding.Stores.AzureStorage
 {
-	public class AzureStorageBrandingStore : IBrandingStore
+	internal class AzureStorageBrandingStore : IBrandingStore
     {
         private string _connectionString;
         private string _containerName;
@@ -39,7 +40,7 @@ namespace CoreHelpers.Branding.Stores.AzureStorage
             using (StreamReader reader = new StreamReader(blobStream.Value.Content))
             {
                 using (JsonTextReader jsonReader = new JsonTextReader(reader))
-                {
+                {                    
                     var ser = new Newtonsoft.Json.JsonSerializer();
                     return ser.Deserialize<AzureStorageCompanyBranding>(jsonReader);
                 }
