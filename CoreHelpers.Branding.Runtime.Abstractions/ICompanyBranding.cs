@@ -15,6 +15,15 @@ namespace CoreHelpers.Branding.Runtime
 		dataPrivacy
 	}
 
+	public interface ICompanyBrandingColors
+	{
+        string Font { get; }
+        string FontHover { get; }
+        string FontActive { get; }
+        string Primary { get; }
+        string PrimaryHover { get; }
+	}
+
 	public interface ICompanyBranding
 	{
 		string Name { get; }
@@ -22,6 +31,8 @@ namespace CoreHelpers.Branding.Runtime
 		Dictionary<nLogoSize, string> Logos { get; }
 
 		Dictionary<nLegalItems, string> Legals { get; }
-	}
+
+        ICompanyBrandingColors Colors { get; }
+    }
 }
 
