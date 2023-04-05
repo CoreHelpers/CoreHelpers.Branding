@@ -9,7 +9,7 @@ namespace CoreHelpers.Branding.Runtime
         public static IServiceCollection AddBrandingServices(this IServiceCollection services)
         {
             services.AddScoped<IBrandingManager, BrandingManager>();
-            services.AddScoped<IBrandingStateService, BrandingStateService>();
+            services.AddScoped<IBrandingStateService, BrandingStateService>();            
             return services;
         }
     }

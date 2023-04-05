@@ -23,8 +23,8 @@ namespace CoreHelpers.Branding.Runtime
         string Primary { get; }
         string PrimaryHover { get; }
 	}
-
-	public interface ICompanyBranding
+    
+    public interface ICompanyBranding
 	{
 		string Name { get; }
 

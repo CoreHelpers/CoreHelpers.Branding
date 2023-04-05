@@ -5,9 +5,9 @@ namespace CoreHelpers.Branding.Runtime
 {
 	public interface IBrandingManager
 	{
-		Task<ICompanyBranding> FindCompanyBrandingByApplicationAndUniqueIdentifier(string applicationId, string brandingId, ICompanyBranding defaultValues);
+        IBrandingBuilder CreateBuilder();
 
-		ICompanyBranding BuildMutableBranding(string name);
+        Task<ICompanyBranding> FindCompanyBrandingByApplicationAndUniqueIdentifier(string applicationId, string brandingId, ICompanyBranding defaultValues);		
     }
 }
 

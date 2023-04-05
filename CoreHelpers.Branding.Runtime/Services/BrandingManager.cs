@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using CoreHelpers.Branding.Runtime.Models;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace CoreHelpers.Branding.Runtime.Services
@@ -17,9 +16,9 @@ namespace CoreHelpers.Branding.Runtime.Services
             _memoryCache = memoryCache;
         }
 
-        public ICompanyBranding BuildMutableBranding(string name)
+        public IBrandingBuilder CreateBuilder()
         {
-            return new MutableCompanyBranding(name);
+            return new BrandingBuilder();
         }
 
         public async Task<ICompanyBranding> FindCompanyBrandingByApplicationAndUniqueIdentifier(string applicationId, string brandingId, ICompanyBranding defaultValues)

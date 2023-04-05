@@ -6,7 +6,7 @@ namespace CoreHelpers.Branding.AspNet
 {
     public static class MiddlwareBrandingInjector
     {        
-        public static IApplicationBuilder UseBrandingWithRequestHost(this IApplicationBuilder app, string applicationId, Func<IBrandingManager, Task<ICompanyBranding>> defaultBrandingBuilder)
+        public static IApplicationBuilder UseBrandingWithRequestHost(this IApplicationBuilder app, string applicationId, Func<IBrandingBuilder, Task<ICompanyBranding>> defaultBrandingBuilder)
         {
             app.Use(async (ctx, next) =>
             {
@@ -20,7 +20,7 @@ namespace CoreHelpers.Branding.AspNet
                 var currentBranding = await brandingManager.FindCompanyBrandingByApplicationAndUniqueIdentifier(applicationId, ctx.Request.Host.Host.ToString().ToSha1(), null);
                 if (currentBranding == null)
                 {
-                    var defaultBranding = await defaultBrandingBuilder(brandingManager);
+                    var defaultBranding = await defaultBrandingBuilder(brandingManager.CreateBuilder());
                     currentBranding = await brandingManager.FindCompanyBrandingByApplicationAndUniqueIdentifier(applicationId, ctx.Request.Host.Host.ToString().ToSha1(), defaultBranding);
                 }
 
