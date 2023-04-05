@@ -14,6 +14,8 @@ namespace CoreHelpers.Branding.Runtime.Services
         public string Primary { get; set; } = string.Empty;
 
         public string PrimaryHover { get; set; } = string.Empty;
+
+        public string PrimaryFont { get; set; } = string.Empty;
     }
 
     public class BrandingBuilderModel : ICompanyBranding
@@ -81,6 +83,9 @@ namespace CoreHelpers.Branding.Runtime.Services
                     break;
                 case nColorType.primaryHover:
                     colorModel.PrimaryHover = colorValue;
+                    break;
+                case nColorType.primaryFont:
+                    colorModel.PrimaryFont = colorValue;
                     break;
                 default:
                     throw new Exception("Unknonw color type");

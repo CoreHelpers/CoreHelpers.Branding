@@ -9,7 +9,8 @@ namespace CoreHelpers.Branding.Runtime
         fontHover,
         fontActive,
         primary,
-        primaryHover
+        primaryHover,
+        primaryFont
     }
 
     public interface IBrandingBuilder

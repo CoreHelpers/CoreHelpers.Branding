@@ -22,6 +22,7 @@ namespace CoreHelpers.Branding.Runtime
         string FontActive { get; }
         string Primary { get; }
         string PrimaryHover { get; }
+		string PrimaryFont { get; }
 	}
     
     public interface ICompanyBranding

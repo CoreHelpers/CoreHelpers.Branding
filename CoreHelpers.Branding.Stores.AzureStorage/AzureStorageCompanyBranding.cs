@@ -15,6 +15,8 @@ namespace CoreHelpers.Branding.Stores.AzureStorage
         public string Primary { get; }
 
         public string PrimaryHover { get; }
+
+        public string PrimaryFont { get; }
     }
 
     public class AzureStorageCompanyBranding : ICompanyBranding
