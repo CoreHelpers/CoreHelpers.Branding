@@ -1,5 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Threading.Tasks;
 using CoreHelpers.Branding.Runtime;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CoreHelpers.Branding.AspNet
@@ -27,8 +31,12 @@ namespace CoreHelpers.Branding.AspNet
                 // set the state
                 brandingStateService.SetCurrentCompanyBranding(currentBranding);
 
-                // next middleware 
+                // next middleware
+#if NETCOREAPP3_1
+                await next.Invoke();
+#else
                 await next(ctx);
+#endif
             });
 
             return app;
@@ -42,7 +50,12 @@ namespace CoreHelpers.Branding.AspNet
                 {
 
                     // next middleware 
+#if NETCOREAPP3_1
+                    await next.Invoke();
+#else
                     await next(ctx);
+#endif
+
 
                     // done
                     return;
@@ -57,15 +70,29 @@ namespace CoreHelpers.Branding.AspNet
                 if (brandingStateService.CurrentCompanyBranding == null)
                     throw new Exception("No branding state is available");
 
-                // write the branding as json
-                await ctx.Response.WriteAsJsonAsync<ICompanyBranding>(brandingStateService.CurrentCompanyBranding);
+#if NETCOREAPP3_1
+                // write the branding as json                
+                var json = Newtonsoft.Json.JsonConvert.SerializeObject(
+                    brandingStateService.CurrentCompanyBranding,
+                    new Newtonsoft.Json.JsonSerializerSettings {
+                        ContractResolver = new Newtonsoft.Json.Serialization.CamelCasePropertyNamesContractResolver(),
+                        Formatting = Newtonsoft.Json.Formatting.Indented
+                        }
+                    );
 
+                await ctx.Response.WriteAsync(json);
+#else
+                // write the branding as json                                
+                await ctx.Response.WriteAsJsonAsync<ICompanyBranding>(brandingStateService.CurrentCompanyBranding);
+#endif
+
+                
                 // done
                 return;
             });
 
             return app;
-        }
+        }       
     }
 }
 

@@ -1,8 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
  
   <PropertyGroup>
-    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
+    <TargetFrameworks>net6.0;netcoreapp3.1</TargetFrameworks>    
     <Nullable>enable</Nullable>       
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
@@ -24,5 +23,8 @@
     <ProjectReference Include="..\CoreHelpers.Branding.Runtime.Abstractions\CoreHelpers.Branding.Runtime.Abstractions.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" Condition="'$(TargetFramework)' == 'netcoreapp3.1'" />    
   </ItemGroup>
 </Project>
