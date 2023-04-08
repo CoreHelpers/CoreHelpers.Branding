@@ -6,7 +6,9 @@ namespace CoreHelpers.Branding.Runtime
 	public enum nLogoSize {
 		small,
 		medium,
-		large
+		large,
+		fav16,
+		fav32
 	}
 
 	public enum nLegalItems
