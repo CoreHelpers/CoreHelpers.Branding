@@ -22,20 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="DataFiles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DataFiles\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Update="DataFiles\BasicCompanyBranding.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Update="DataFiles\BasicCompanyBranding %28copy%29.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\CoreHelpers.Branding.Stores.AzureStorage\CoreHelpers.Branding.Stores.AzureStorage.csproj" />
+    <ProjectReference Include="..\CoreHelpers.Branding.Runtime\CoreHelpers.Branding.Runtime.csproj" />
   </ItemGroup>
 </Project>

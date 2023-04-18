@@ -10,9 +10,5 @@
   "colors": {
     "primary": "#e20074",
     "PrimaryFont": "white"
-  },
-  "attributes": {
-    "attr01": "demo01",
-    "attr02": "demo02"
   }
 }

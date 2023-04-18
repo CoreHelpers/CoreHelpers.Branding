@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreHelpers.Branding.AspNet
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreHelpers.Branding.Stores.AzureStorage.Tests", "CoreHelpers.Branding.Stores.AzureStorage.Tests\CoreHelpers.Branding.Stores.AzureStorage.Tests.csproj", "{802BB680-BF47-4B74-A7DF-3FC81B07D6E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CoreHelpers.Branding.Runtime.Tests", "CoreHelpers.Branding.Runtime.Tests\CoreHelpers.Branding.Runtime.Tests.csproj", "{7C362EF5-CD21-4A26-835C-24AB6194A614}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{802BB680-BF47-4B74-A7DF-3FC81B07D6E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{802BB680-BF47-4B74-A7DF-3FC81B07D6E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{802BB680-BF47-4B74-A7DF-3FC81B07D6E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7C362EF5-CD21-4A26-835C-24AB6194A614}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7C362EF5-CD21-4A26-835C-24AB6194A614}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7C362EF5-CD21-4A26-835C-24AB6194A614}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7C362EF5-CD21-4A26-835C-24AB6194A614}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

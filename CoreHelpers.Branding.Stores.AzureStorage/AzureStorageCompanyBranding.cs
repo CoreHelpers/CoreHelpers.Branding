@@ -30,6 +30,8 @@ namespace CoreHelpers.Branding.Stores.AzureStorage
 
         [JsonConverter(typeof(ConcreteTypeConverter<AzureStorageCompanyBrandingColors>))]
         public ICompanyBrandingColors Colors { get; set; }
+
+        public Dictionary<string, string> Attributes { get; set; } = new Dictionary<string, string>();
     }
 }
 

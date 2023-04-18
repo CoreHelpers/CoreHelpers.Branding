@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace CoreHelpers.Branding.Runtime.Services
 {
-    public class BrandingBuilderColorModel : ICompanyBrandingColors
+    internal class BrandingBuilderColorModel : ICompanyBrandingColors
     {
         public string Font { get; set; } = string.Empty;
 
@@ -18,7 +18,7 @@ namespace CoreHelpers.Branding.Runtime.Services
         public string PrimaryFont { get; set; } = string.Empty;
     }
 
-    public class BrandingBuilderModel : ICompanyBranding
+    internal class BrandingBuilderModel : ICompanyBranding
     {
         public string Name { get; set; } = string.Empty;
 
@@ -27,9 +27,11 @@ namespace CoreHelpers.Branding.Runtime.Services
         public Dictionary<nLegalItems, string> Legals { get; } = new Dictionary<nLegalItems, string>();
 
         public ICompanyBrandingColors Colors { get; set; } = new BrandingBuilderColorModel();
+
+        public Dictionary<string, string> Attributes { get; set; } = new Dictionary<string, string>();
     }
-  
-    public class BrandingBuilder : IBrandingBuilder
+
+    internal class BrandingBuilder : IBrandingBuilder
     {
         private BrandingBuilderModel model = new BrandingBuilderModel();
         private BrandingBuilderColorModel colorModel = new BrandingBuilderColorModel();
@@ -90,6 +92,16 @@ namespace CoreHelpers.Branding.Runtime.Services
                 default:
                     throw new Exception("Unknonw color type");
             }
+            return this;
+        }
+
+        public IBrandingBuilder AddAttribute(string key, string value)
+        {
+            if (model.Attributes.ContainsKey(key))
+                model.Attributes[key] = value;
+            else
+                model.Attributes.Add(key, value);
+
             return this;
         }
 

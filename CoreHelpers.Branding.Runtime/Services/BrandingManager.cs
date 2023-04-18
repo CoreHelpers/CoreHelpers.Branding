@@ -5,7 +5,7 @@ using Microsoft.Extensions.Caching.Memory;
 
 namespace CoreHelpers.Branding.Runtime.Services
 {
-	public class BrandingManager : IBrandingManager
+	internal class BrandingManager : IBrandingManager
     {
         private IEnumerable<IBrandingStore> _stores;
         private IMemoryCache _memoryCache;

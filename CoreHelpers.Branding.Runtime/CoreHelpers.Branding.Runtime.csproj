@@ -14,9 +14,11 @@
 
   <ItemGroup>
     <None Remove="Services\" />
+    <None Remove="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
+    <Folder Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CoreHelpers.Branding.Runtime.Abstractions\CoreHelpers.Branding.Runtime.Abstractions.csproj" />

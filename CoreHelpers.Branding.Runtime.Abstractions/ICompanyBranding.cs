@@ -25,17 +25,19 @@ namespace CoreHelpers.Branding.Runtime
         string Primary { get; }
         string PrimaryHover { get; }
 		string PrimaryFont { get; }
-	}
-    
+	}    
+
     public interface ICompanyBranding
 	{
-		string Name { get; }
+		string Name { get; }		
 
 		Dictionary<nLogoSize, string> Logos { get; }
 
 		Dictionary<nLegalItems, string> Legals { get; }
 
         ICompanyBrandingColors Colors { get; }
+
+		Dictionary<string, string> Attributes { get; }
     }
 }
 
