@@ -12,6 +12,13 @@ namespace CoreHelpers.Branding.Runtime
             services.AddScoped<IBrandingStateService, BrandingStateService>();            
             return services;
         }
+
+        public static IServiceCollection AddBrandingServicesTransient(this IServiceCollection services)
+        {
+            services.AddTransient<IBrandingManager, BrandingManager>();
+            services.AddTransient<IBrandingStateService, BrandingStateService>();            
+            return services;
+        }
     }
 }
 
